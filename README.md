@@ -1,16 +1,73 @@
-# React + Vite
+# 🚀 Job Application Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🔗 **Live Demo:** https://job-tracker-app-livid.vercel.app/  
+💻 **Source Code:** https://github.com/hardiksingla0003/job-tracker
 
-Currently, two official plugins are available:
+A modern and responsive **Job Application Tracker** built with **React (Vite)** and **Tailwind CSS**.  
+The application allows users to manage job applications efficiently with drag-and-drop functionality, advanced filtering, debounced search, and real-time analytics.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 📸 Screenshots
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 🏠 Empty Dashboard
 
-## Expanding the ESLint configuration
+![Empty Dashboard](./screenshots/empty-dashboard.png)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 📋 Jobs Added
+
+![Jobs Added](./screenshots/jobs-added-1.png)
+![Jobs Added](./screenshots/jobs-added-2.png)
+
+### 🔄 Drag & Drop in Action
+
+![Drag and Drop](./screenshots/drag-drop.gif)
+
+### 🔍 Filters & Search
+
+![Filters and Search](./screenshots/filters.png)
+![Filters and Search](./screenshots/search.png)
+
+---
+
+## ✨ Features
+
+- Add, edit, and delete job applications
+- Drag & drop between application statuses
+- Debounced search for optimized filtering
+- Filter by status and date range
+- Dynamic statistics dashboard (Offer rate, Rejection rate)
+- Persistent state using LocalStorage
+- Fully responsive design
+
+---
+
+## 🛠 Tech Stack
+
+- **React (Vite)** — Frontend framework
+- **Tailwind CSS** — Styling
+- **Context API + useReducer** — State management
+- **Custom Hooks** — Reusable logic abstraction
+- **@dnd-kit/core** — Drag & Drop interaction
+- **Vercel** — Deployment & CI/CD
+
+---
+
+## 🏗 Architecture Highlights
+
+- Clean and scalable folder structure
+- Separation of concerns (components, hooks, context)
+- Performance optimization using `useMemo`
+- Centralized state management
+- Modular and reusable components
+
+---
+
+## 🚀 Run Locally
+
+```bash
+git clone https://github.com/hardiksingla0003/job-tracker.git
+cd job-tracker
+npm install
+npm run dev
+```
