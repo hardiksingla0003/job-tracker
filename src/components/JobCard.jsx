@@ -9,7 +9,7 @@ const JobCard = ({ job, onDelete, onEdit }) => {
     <div
       ref={setNodeRef}
       style={{ transform: CSS.Translate.toString(transform) }}
-      className="bg-gray-50 p-4 rounded-xl shadow-sm transition-all duration-100 ease-in-out hover:shadow-lg hover:scale-[1.03] flex flex-col gap-2"
+      className="bg-gray-50 p-4 rounded-xl shadow-sm transition-all duration-100 ease-in-out hover:shadow-lg hover:scale-[1.03] flex flex-col gap-2 touch-none"
     >
       <div className="flex justify-between items-start">
         <div>
