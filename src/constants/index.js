@@ -9,12 +9,6 @@ export const ACTIONS = {
   MOVE_JOB: "MOVE_JOB",
 };
 
-export const JOB_STATUS = {
-  PENDING: "pending",
-  IN_PROGRESS: "in_progress",
-  COMPLETED: "completed",
-};
-
 export const STATUSES = ["All", "Applied", "Interview", "Offer", "Rejected"];
 
 export const DATE_FILTERS = [

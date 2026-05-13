@@ -1,8 +1,13 @@
-const StatCard = ({ title, value }) => {
+const StatCard = ({ title, value, color }) => {
   return (
-    <div className="bg-white p-4 rounded-xl shadow-sm text-center">
-      <p className="text-sm text-gray-500">{title}</p>
-      <h3 className="text-2xl font-bold text-gray-800">{value}</h3>
+    <div className="px-2.5 py-3.5 rounded-xl text-center bg-[rgba(255,255,255,0.08)] border-[0.5px] border-[rgba(255,255,255,0.12)]">
+      <h3
+        className="font-medium text-[24px] tracking-[-0.5px]"
+        style={{ color: color ?? "#fff" }}
+      >
+        {value}
+      </h3>
+      <p className="text-[10px] text-[#A5B4FC] mt-0.75">{title}</p>
     </div>
   );
 };
