@@ -37,9 +37,11 @@ const EmptyState = ({ title, message, type = "empty" }) => {
         {icon}
       </div>
 
-      <h2 className="text-lg font-semibold mb-2 text-[#1E1B4B]">{title}</h2>
+      <h2 className="text-lg text-center font-semibold mb-2 text-[#1E1B4B]">
+        {title}
+      </h2>
 
-      <p className="text-sm text-[#6B7280]  max-w-xs">{message}</p>
+      <p className="text-sm text-center text-[#6B7280]  max-w-xs">{message}</p>
     </div>
   );
 };
