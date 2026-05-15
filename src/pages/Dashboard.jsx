@@ -11,7 +11,6 @@ import useFilteredJobs from "../hooks/useFilteredJobs";
 import EmptyState from "../components/EmptyState";
 import { X } from "lucide-react";
 import toast from "react-hot-toast";
-import { TOAST_STYLES } from "../constants";
 
 const Dashboard = () => {
   const [showModal, setShowModal] = useState(false);
@@ -51,13 +50,15 @@ const Dashboard = () => {
               setPendingDelete(null);
               toast.dismiss(t.id);
             }}
-            className="underline text-indigo-400 whitespace-nowrap cursor-pointer"
+            className="underline font-medium text-indigo-400 whitespace-nowrap cursor-pointer"
           >
             Undo
           </button>
         </div>
       ),
-      { duration: 4000 },
+      {
+        duration: 4000,
+      },
     );
   };
 
@@ -84,7 +85,7 @@ const Dashboard = () => {
 
     moveJob(jobId, newStatus);
 
-    toast.success(`${job.company} moved to ${newStatus}`, TOAST_STYLES);
+    toast.success(`${job.company} moved to ${newStatus}`);
 
     const willBeHidden = statusFilter !== "All" && statusFilter !== newStatus;
 

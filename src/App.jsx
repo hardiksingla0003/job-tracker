@@ -7,7 +7,7 @@ import { TOAST_STYLES } from "./constants";
 const App = () => {
   return (
     <>
-      <Toaster position="top-right" />
+      <Toaster position="top-right" toastOptions={{ ...TOAST_STYLES }} />
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="*" element={<NotFound />} />

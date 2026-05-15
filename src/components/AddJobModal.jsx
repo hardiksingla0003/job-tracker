@@ -1,7 +1,7 @@
 import { X } from "lucide-react";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { STATUS_STYLES, STATUSES, TOAST_STYLES } from "../constants";
+import { STATUS_STYLES, STATUSES } from "../constants";
 
 const AddJobModal = ({ onClose, onAdd, onUpdate, editingJob }) => {
   const [job, setJob] = useState({
@@ -43,10 +43,7 @@ const AddJobModal = ({ onClose, onAdd, onUpdate, editingJob }) => {
     editingJob ? onUpdate(job) : onAdd(job);
     setError("");
     onClose();
-    toast.success(
-      `${editingJob ? "Job updated!" : "Job added!"}`,
-      TOAST_STYLES,
-    );
+    toast.success(`${editingJob ? "Job updated!" : "Job added!"}`);
   };
 
   return (
