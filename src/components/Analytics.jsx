@@ -38,7 +38,7 @@ const Analytics = ({ jobs }) => {
   return (
     <div className="bg-white p-5 sm:p-6 rounded-2xl border-[0.5px] border-[rgba(99,102,241,0.1)]">
       <div className="flex items-center gap-2 mb-4">
-        <div className="w-1.5 h-1.5 rounded-full bg-[#6366F1]" />
+        <div className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
         <h2 className="text-[13px] font-medium">Applications analytics</h2>
       </div>
 

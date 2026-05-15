@@ -5,35 +5,31 @@ import { Send, Trophy, Users, X } from "lucide-react";
 const STATUS_STYLES = {
   Applied: {
     Icon: Send,
-    iconBg: "#EFF6FF",
-    nameColor: "#1D4ED8",
-    badgeBg: "#DBEAFE",
-    badgeText: "#1D4ED8",
-    iconColor: "#3B82F6",
+    iconBg: "bg-blue-50",
+    nameColor: "text-blue-700",
+    badgeBg: "bg-blue-100",
+    iconColor: "text-blue-500",
   },
   Interview: {
     Icon: Users,
-    iconBg: "#FFFBEB",
-    nameColor: "#B45309",
-    badgeBg: "#FEF3C7",
-    badgeText: "#B45309",
-    iconColor: "#F59E0B",
+    iconBg: "bg-amber-50",
+    nameColor: "text-amber-700",
+    badgeBg: "bg-amber-100",
+    iconColor: "text-amber-500",
   },
   Offer: {
     Icon: Trophy,
-    iconBg: "#F0FDF4",
-    nameColor: "#15803D",
-    badgeBg: "#DCFCE7",
-    badgeText: "#15803D",
-    iconColor: "#22C55E",
+    iconBg: "bg-green-50",
+    nameColor: "text-green-700",
+    badgeBg: "bg-green-100",
+    iconColor: "text-green-500",
   },
   Rejected: {
     Icon: X,
-    iconBg: "#FFF1F2",
-    nameColor: "#B91C1C",
-    badgeBg: "#FFE4E6",
-    badgeText: "#B91C1C",
-    iconColor: "#EF4444",
+    iconBg: "rose-50",
+    nameColor: "text-red-700",
+    badgeBg: "bg-rose-100",
+    iconColor: "text-red-500",
   },
 };
 
@@ -45,25 +41,21 @@ const Column = ({ status, jobs, onDelete, onEdit }) => {
   return (
     <div
       ref={setNodeRef}
-      className="bg-[#F8F7FF] rounded-xl p-3 flex flex-col min-h-[60vh] border-[0.5px] border-[rgba(99,102,241,0.1)]"
+      className="bg-violet-50 rounded-xl p-3 flex flex-col min-h-[60vh] border-[0.5px] border-[rgba(99,102,241,0.1)]"
     >
       <div className="flex justify-between items-center mb-3">
         <div className="flex items-center gap-2">
           <div
-            className="w-7 h-7 rounded-lg flex items-center justify-center text-sm"
-            style={{ background: s.iconBg }}
+            className={`w-7 h-7 rounded-lg flex items-center justify-center text-sm ${s.iconBg} ${s.iconColor}`}
           >
-            <Icon size={14} color={s.iconColor} />
+            <Icon size={14} />
           </div>
 
-          <span className="font-medium text-sm" style={{ color: s.nameColor }}>
-            {status}
-          </span>
+          <span className={`font-medium text-sm ${s.nameColor}`}>{status}</span>
         </div>
 
         <span
-          className="text-xs font-medium px-2.5 py-0.5 rounded-full"
-          style={{ background: s.badgeBg, color: s.badgeText }}
+          className={`text-xs font-medium px-2.5 py-0.5 rounded-full ${s.badgeBg} ${s.nameColor}`}
         >
           {filteredJobs.length}
         </span>

@@ -1,6 +1,6 @@
 const Navbar = ({ onAddClick }) => {
   return (
-    <div className="sticky top-0 z-50 px-6 py-3.5 flex justify-between items-center bg-[#1E1B4B]">
+    <div className="sticky top-0 z-50 px-6 py-3.5 flex justify-between items-center bg-indigo-950">
       <div className="flex items-center gap-3">
         <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-[linear-gradient(135deg,#818CF8,#6366F1)]">
           <svg
@@ -23,7 +23,7 @@ const Navbar = ({ onAddClick }) => {
             Job Tracker
           </div>
 
-          <div className="text-[11px] text-[#818CF8]">
+          <div className="text-[11px] text-indigo-400">
             Track your applications
           </div>
         </div>
@@ -31,7 +31,7 @@ const Navbar = ({ onAddClick }) => {
 
       <button
         onClick={onAddClick}
-        className="text-[13px] font-medium bg-[#6366F1] transition-all duration-200 hover:scale-105 active:scale-95 text-white px-4.5 py-2 rounded-lg cursor-pointer"
+        className="text-[13px] font-medium bg-indigo-500 transition-all duration-200 hover:scale-105 active:scale-95 text-white px-4.5 py-2 rounded-lg cursor-pointer"
       >
         + Add Job
       </button>

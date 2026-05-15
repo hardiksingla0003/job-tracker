@@ -8,8 +8,7 @@ import {
 } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { jobReducer } from "./jobReducer";
-import { ACTIONS } from "../constants";
-import { LOCAL_STORAGE_KEYS } from "../constants";
+import { ACTIONS, LOCAL_STORAGE_KEYS } from "../constants";
 
 export const JobContext = createContext(null);
 

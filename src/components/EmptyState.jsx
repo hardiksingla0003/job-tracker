@@ -32,16 +32,16 @@ const EmptyState = ({ title, message, type = "empty" }) => {
     );
 
   return (
-    <div className="flex flex-col items-center justify-center py-20 px-6">
-      <div className="w-20 h-20 rounded-2xl flex justify-center items-center mb-5 bg-[#E0E7FF]">
+    <div className="flex flex-col items-center justify-center py-8 px-6">
+      <div className="w-20 h-20 rounded-2xl flex justify-center items-center mb-5 bg-indigo-100">
         {icon}
       </div>
 
-      <h2 className="text-lg text-center font-semibold mb-2 text-[#1E1B4B]">
+      <h2 className="text-lg text-center font-semibold mb-2 text-indigo-950">
         {title}
       </h2>
 
-      <p className="text-sm text-center text-[#6B7280]  max-w-xs">{message}</p>
+      <p className="text-sm text-center text-gray-500 max-w-xs">{message}</p>
     </div>
   );
 };

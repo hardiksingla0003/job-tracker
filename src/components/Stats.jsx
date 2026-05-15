@@ -12,24 +12,29 @@ const Stats = ({ jobs }) => {
     const offerRate = total ? ((offer / total) * 100).toFixed(1) : 0;
 
     return [
-      { title: "Total Applications", value: total, color: "#fff" },
-      { title: "Applied", value: applied, color: "#93C5FD" },
-      { title: "Interview", value: interview, color: "#FCD34D" },
-      { title: "Offer", value: offer, color: "#86EFAC" },
-      { title: "Rejected", value: rejected, color: "#FCA5A5" },
-      { title: "Offer Rate", value: `${offerRate}%`, color: "#86EFAC" },
-      { title: "Rejection Rate", value: `${rejectionRate}%`, color: "#FCA5A5" },
+      { title: "Total Applications", value: total, color: "text-slate-300" },
+      { title: "Applied", value: applied, color: "text-blue-300" },
+      { title: "Interview", value: interview, color: "text-amber-300" },
+      { title: "Offer", value: offer, color: "text-green-300" },
+      { title: "Rejected", value: rejected, color: "text-red-300" },
+      { title: "Offer Rate", value: `${offerRate}%`, color: "text-green-300" },
+      {
+        title: "Rejection Rate",
+        value: `${rejectionRate}%`,
+        color: "text-red-300",
+      },
     ];
   }, [jobs]);
   return (
-    <div
-      className="px-6 pb-12 pt-5 "
-      style={{
-        background:
-          "linear-gradient(135deg, #1E1B4B 0%, #312E81 60%, #4338CA 100%)",
-      }}
-    >
-      <p className="text-[13px] text-[#A5B4FC] mb-4">— Overview </p>
+    <div className="px-6 pb-12 pt-5 bg-[linear-gradient(135deg,#1E1B4B_0%,#312E81_60%,#4338CA_100%)]">
+      <p className="text-[13px] text-indigo-300 mb-4">
+        {" "}
+        Overview —{" "}
+        {new Date().toLocaleDateString("en-US", {
+          month: "long",
+          year: "numeric",
+        })}{" "}
+      </p>
       <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
         {stats.map((s) => (
           <StatCard

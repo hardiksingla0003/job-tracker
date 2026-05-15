@@ -1,34 +1,7 @@
 import { X } from "lucide-react";
 import { useEffect, useState } from "react";
-
-const STATUSES = ["Applied", "Interview", "Offer", "Rejected"];
-
-const STATUS_STYLES = {
-  Applied: {
-    bg: "bg-[#DBEAFE]",
-    color: "text-[#1D4ED8]",
-    active: "bg-[#3B82F6]",
-    border: "border-[#3B82F6]",
-  },
-  Interview: {
-    bg: "bg-[#FEF3C7]",
-    color: "text-[#B45309]",
-    active: "bg-[#F59E0B]",
-    border: "border-[#F59E0B]",
-  },
-  Offer: {
-    bg: "bg-[#DCFCE7]",
-    color: "text-[#15803D]",
-    active: "bg-[#22C55E]",
-    border: "border-[#22C55E]",
-  },
-  Rejected: {
-    bg: "bg-[#FFE4E6]",
-    color: "text-[#B91C1C]",
-    active: "bg-[#EF4444]",
-    border: "border-[#EF4444]",
-  },
-};
+import toast from "react-hot-toast";
+import { STATUS_STYLES, STATUSES, TOAST_STYLES } from "../constants";
 
 const AddJobModal = ({ onClose, onAdd, onUpdate, editingJob }) => {
   const [job, setJob] = useState({
@@ -55,12 +28,14 @@ const AddJobModal = ({ onClose, onAdd, onUpdate, editingJob }) => {
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [onClose]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setError("");
     setJob((prev) => ({ ...prev, [name]: value }));
   };
-  const handleSubmit = (e) => {
+
+  const handleSubmit = () => {
     if (!job.company.trim() || !job.role.trim()) {
       setError("Company and Role field are required*");
       return;
@@ -68,6 +43,10 @@ const AddJobModal = ({ onClose, onAdd, onUpdate, editingJob }) => {
     editingJob ? onUpdate(job) : onAdd(job);
     setError("");
     onClose();
+    toast.success(
+      `${editingJob ? "Job updated!" : "Job added!"}`,
+      TOAST_STYLES,
+    );
   };
 
   return (
@@ -82,7 +61,7 @@ const AddJobModal = ({ onClose, onAdd, onUpdate, editingJob }) => {
               {editingJob ? "Edit Application" : "New Application"}
             </h2>
 
-            <p className="text-xs text-[#A5B4FC] mt-0.5">
+            <p className="text-xs text-indigo-300 mt-0.5">
               {editingJob
                 ? "Update the job details below"
                 : "Fill in the details to track a new job"}
@@ -91,7 +70,7 @@ const AddJobModal = ({ onClose, onAdd, onUpdate, editingJob }) => {
 
           <button
             onClick={() => onClose()}
-            className="w-8 h-8 rounded-lg text-[#A5B4FC] bg-[rgba(255,255,255,0.1)] flex items-center justify-center cursor-pointer transition-colors"
+            className="w-8 h-8 rounded-lg text-indigo-300 bg-[rgba(255,255,255,0.1)] flex items-center justify-center cursor-pointer transition-colors"
           >
             <X size={18} />
           </button>
@@ -106,7 +85,7 @@ const AddJobModal = ({ onClose, onAdd, onUpdate, editingJob }) => {
               type="text"
               name="company"
               placeholder="e.g. Google, Stripe, Vercel"
-              className="w-full border-[0.5px] border-indigo-500/25 outline-none text-sm transition-all text-gray-800 px-4 py-2.5 rounded-xl bg-[#FAFAFA]"
+              className="w-full border-[0.5px] border-indigo-500/25 outline-none text-sm transition-all text-gray-800 px-4 py-2.5 rounded-xl bg-zinc-50"
               value={job.company}
               onChange={handleChange}
             />
@@ -118,7 +97,7 @@ const AddJobModal = ({ onClose, onAdd, onUpdate, editingJob }) => {
               type="text"
               name="role"
               placeholder="e.g. Frontend Engineer, Product Designer"
-              className="w-full border-[0.5px] border-indigo-500/25 outline-none text-sm transition-all text-gray-800 px-4 py-2.5 rounded-xl bg-[#FAFAFA]"
+              className="w-full border-[0.5px] border-indigo-500/25 outline-none text-sm transition-all text-gray-800 px-4 py-2.5 rounded-xl bg-zinc-50"
               value={job.role}
               onChange={handleChange}
             />
@@ -129,6 +108,7 @@ const AddJobModal = ({ onClose, onAdd, onUpdate, editingJob }) => {
 
             <div className="grid grid-cols-4 gap-2">
               {STATUSES.map((status) => {
+                if (status === "All") return;
                 const s = STATUS_STYLES[status];
                 const isSelected = job.status === status;
                 return (

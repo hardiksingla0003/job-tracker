@@ -2,12 +2,12 @@ import { CircleAlert } from "lucide-react";
 
 const NotFound = () => {
   return (
-    <div className="flex flex-col items-center bg-[#EEEDF8] justify-center min-h-screen gap-4">
-      <div className="w-16 h-16 bg-[#E0E7FF] flex items-center justify-center rounded-xl">
-        <CircleAlert size={32} stroke="#6366F1" />
+    <div className="flex flex-col items-center bg-violet-50 justify-center min-h-screen gap-4">
+      <div className="w-16 h-16 bg-indigo-100 flex items-center justify-center rounded-xl text-indigo-500">
+        <CircleAlert size={32} />
       </div>
 
-      <h1 className="text-2xl font-semibold text-[#1E1B4B]">Page Not Found</h1>
+      <h1 className="text-2xl font-semibold text-indigo-950">Page Not Found</h1>
       <p className="text-sm text-gray-500">
         The page you're looking for doesn't exist.
       </p>

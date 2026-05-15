@@ -2,20 +2,7 @@ import { useDraggable } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
 import { Calendar, GripVertical } from "lucide-react";
 import formatDate from "../utils/formatDate";
-
-const STATUS_BADGE = {
-  Applied: "bg-[#DBEAFE] text-[#1D4ED8]",
-  Interview: "bg-[#FEF3C7] text-[#B45309]",
-  Offer: "bg-[#DCFCE7] text-[#15803D]",
-  Rejected: "bg-[#FFE4E6] text-[#B91C1C]",
-};
-
-const INITIAL_COLORS = {
-  Applied: "bg-[#EFF6FF] text-[#1D4ED8]",
-  Interview: "bg-[#FFFBEB] text-[#B45309]",
-  Offer: "bg-[#F0FDF4] text-[#15803D]",
-  Rejected: "bg-[#FFF1F2] text-[#B91C1C]",
-};
+import { INITIAL_COLORS, STATUS_BADGE } from "../constants";
 
 const JobCard = ({ job, onDelete, onEdit }) => {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
@@ -57,7 +44,7 @@ const JobCard = ({ job, onDelete, onEdit }) => {
         {job.status}
       </span>
 
-      <div className="flex items-center justify-between pt-2 border-t-[0.5px] border-[#F3F4F6]">
+      <div className="flex items-center justify-between pt-2 border-t-[0.5px] border-gray-100">
         {job.createdAt && (
           <p className="text-xs text-gray-400 flex gap-1 items-center">
             <Calendar size={11} />

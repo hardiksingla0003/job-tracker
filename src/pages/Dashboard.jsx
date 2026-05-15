@@ -10,6 +10,8 @@ import Board from "../components/Board";
 import useFilteredJobs from "../hooks/useFilteredJobs";
 import EmptyState from "../components/EmptyState";
 import { X } from "lucide-react";
+import toast from "react-hot-toast";
+import { TOAST_STYLES } from "../constants";
 
 const Dashboard = () => {
   const [showModal, setShowModal] = useState(false);
@@ -18,7 +20,6 @@ const Dashboard = () => {
   const debouncedSearch = useDebounce(searchTerm, 400);
   const [statusFilter, setStatusFilter] = useState("All");
   const [dateFilter, setDateFilter] = useState("All");
-  const [dragToast, setDragToast] = useState(null);
   const [pendingDelete, setPendingDelete] = useState(null);
   const { jobs, addJob, deleteJob, updateJob, moveJob } = useJobs();
 
@@ -37,13 +38,27 @@ const Dashboard = () => {
     }
 
     setPendingDelete({ job, timerId });
-  };
-
-  const handleUndoDelete = () => {
-    if (!pendingDelete) return;
-    clearTimeout(pendingDelete.timerId);
-    addJob(pendingDelete.job);
-    setPendingDelete(null);
+    toast(
+      (t) => (
+        <div className="flex items-center gap-3">
+          <span>
+            <strong>{job.company}</strong> deleted
+          </span>
+          <button
+            onClick={() => {
+              clearTimeout(timerId);
+              addJob(job);
+              setPendingDelete(null);
+              toast.dismiss(t.id);
+            }}
+            className="underline text-indigo-400 whitespace-nowrap cursor-pointer"
+          >
+            Undo
+          </button>
+        </div>
+      ),
+      { duration: 4000 },
+    );
   };
 
   const handleEditJob = (job) => {
@@ -69,21 +84,34 @@ const Dashboard = () => {
 
     moveJob(jobId, newStatus);
 
+    toast.success(`${job.company} moved to ${newStatus}`, TOAST_STYLES);
+
     const willBeHidden = statusFilter !== "All" && statusFilter !== newStatus;
 
     if (willBeHidden) {
-      setDragToast({ company: job.company, newStatus });
-      setTimeout(() => {
-        setDragToast(null);
-      }, 5000);
-    }
-  };
+      toast(
+        (t) => (
+          <div className="flex items-center gap-3">
+            <span>
+              <strong>{job.company}</strong> hidden by active filter
+            </span>
 
-  const handleClearFilters = () => {
-    setStatusFilter("All");
-    setDateFilter("All");
-    setSearchTerm("");
-    setDragToast(null);
+            <button
+              onClick={() => {
+                setStatusFilter("All");
+                setDateFilter("All");
+                setSearchTerm("");
+                toast.dismiss(t.id);
+              }}
+              className="underline text-indigo-400 whitespace-nowrap cursor-pointer"
+            >
+              Clear filters
+            </button>
+          </div>
+        ),
+        { duration: 5000 },
+      );
+    }
   };
 
   const filteredJobs = useFilteredJobs({
@@ -132,52 +160,6 @@ const Dashboard = () => {
           />
         )}
       </div>
-
-      {dragToast && (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#1E1B4B] text-white text-sm px-4 py-3 rounded-xl shadow-lg flex items-center gap-3">
-          <span>
-            <strong>{dragToast.company}</strong> moved to{" "}
-            <strong>{dragToast.newStatus}</strong> - hidden by active filter
-          </span>
-
-          <button
-            onClick={handleClearFilters}
-            className="underline text-[#818CF8] whitespace-nowrap cursor-pointer"
-          >
-            Clear filters
-          </button>
-
-          <button
-            onClick={() => setDragToast(null)}
-            className="text-[#818CF8] hover:text-white ml-1 cursor-pointer"
-          >
-            ✕
-          </button>
-        </div>
-      )}
-
-      {pendingDelete && (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#1E1B4B] text-white text-sm px-4 py-3 rounded-xl shadow-lg flex items-center gap-3">
-          <span>
-            <strong>{pendingDelete.job.company}</strong> deleted
-          </span>
-          <button
-            onClick={handleUndoDelete}
-            className="underline text-[#818CF8] whitespace-nowrap cursor-pointer"
-          >
-            Undo
-          </button>
-          <button
-            onClick={() => {
-              clearTimeout(pendingDelete.timerId);
-              setPendingDelete(null);
-            }}
-            className="text-[#818CF8] hover:text-white ml-1 cursor-pointer"
-          >
-            <X size={18} />
-          </button>
-        </div>
-      )}
 
       {showModal && (
         <AddJobModal
