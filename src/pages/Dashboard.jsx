@@ -9,7 +9,6 @@ import Filters from "../components/Filters";
 import Board from "../components/Board";
 import useFilteredJobs from "../hooks/useFilteredJobs";
 import EmptyState from "../components/EmptyState";
-import { X } from "lucide-react";
 import toast from "react-hot-toast";
 
 const Dashboard = () => {
