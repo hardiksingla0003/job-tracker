@@ -17,6 +17,7 @@ const JobProvider = ({ children }) => {
     LOCAL_STORAGE_KEYS.JOBS,
     [],
   );
+
   const [jobs, dispatch] = useReducer(jobReducer, storedJobs);
 
   useEffect(() => {
@@ -48,11 +49,13 @@ const JobProvider = ({ children }) => {
     () => ({ jobs, addJob, deleteJob, updateJob, moveJob }),
     [jobs, addJob, deleteJob, updateJob, moveJob],
   );
+
   return <JobContext.Provider value={value}>{children}</JobContext.Provider>;
 };
 
 export const useJobs = () => {
   const context = useContext(JobContext);
+
   if (!context) {
     throw new Error("useJobs must be used inside a JobProvider");
   }

@@ -35,6 +35,7 @@ const Analytics = ({ jobs }) => {
       value: counts[name],
     }));
   }, [jobs]);
+
   return (
     <div className="bg-white p-5 sm:p-6 rounded-2xl border-[0.5px] border-[rgba(99,102,241,0.1)]">
       <div className="flex items-center gap-2 mb-4">
@@ -45,10 +46,12 @@ const Analytics = ({ jobs }) => {
       <ResponsiveContainer width="100%" height={250}>
         <BarChart data={data}>
           <XAxis dataKey="name" tick={{ fontSize: 13, fill: "#9CA3AF" }} />
+
           <YAxis
             allowDecimals={false}
             tick={{ fontSize: 12, fill: "#9CA3AF" }}
           />
+
           <Tooltip
             contentStyle={{
               borderRadius: "10px",
@@ -57,6 +60,7 @@ const Analytics = ({ jobs }) => {
             }}
             cursor={{ fill: "rgba(99,102,241,0.05)" }}
           />
+
           <Bar dataKey="value" radius={[6, 6, 0, 0]}>
             {data.map((entry) => (
               <Cell key={entry.name} fill={STATUS_COLORS[entry.name]} />

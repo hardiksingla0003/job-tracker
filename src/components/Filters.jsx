@@ -19,7 +19,7 @@ const Filters = ({
         <input
           type="text"
           placeholder="Search companies, roles..."
-          className="bg-white pl-9 pr-4 py-2.5 rounded-xl text-sm text-gray-600 outline-none w-full border-[0.5px] border-[rgba(99,102,241,0.15)] text-[13px] focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="bg-white pl-9 pr-4 py-2.5 rounded-xl text-sm text-gray-600 outline-none w-full border-[0.5px] border-[rgba(99,102,241,0.15)] focus:outline-none focus:ring-2 focus:ring-indigo-500"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
@@ -34,7 +34,7 @@ const Filters = ({
       </div>
 
       <select
-        className="bg-white px-4 py-2.5 rounded-xl text-gray-600 border-[0.5px] outline-none border-[rgba(99,102,241,0.15)] text-[13px] flex-1 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        className="bg-white px-4 py-2.5 rounded-xl text-gray-600 border-[0.5px] outline-none border-[rgba(99,102,241,0.15)] text-sm flex-1 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         value={statusFilter}
         onChange={(e) => setStatusFilter(e.target.value)}
       >
@@ -46,7 +46,7 @@ const Filters = ({
       </select>
 
       <select
-        className="bg-white px-4 py-2.5 rounded-xl text-gray-600 border-[0.5px] outline-none border-[rgba(99,102,241,0.15)] text-[13px] flex-1 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        className="bg-white px-4 py-2.5 rounded-xl text-gray-600 border-[0.5px] outline-none border-[rgba(99,102,241,0.15)] text-sm flex-1 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         value={dateFilter}
         onChange={(e) => setDateFilter(e.target.value)}
       >

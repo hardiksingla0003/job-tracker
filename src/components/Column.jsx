@@ -38,6 +38,7 @@ const Column = ({ status, jobs, onDelete, onEdit }) => {
   const filteredJobs = jobs.filter((job) => job.status === status);
   const s = STATUS_STYLES[status];
   const Icon = s.Icon;
+
   return (
     <div
       ref={setNodeRef}

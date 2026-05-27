@@ -7,10 +7,12 @@ import {
 } from "@dnd-kit/core";
 import Column from "./Column";
 import { STATUSES } from "../constants";
+
 const Board = ({ jobs, onDelete, onEdit, onDragEnd }) => {
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 8 } }),
   );
+
   return (
     <DndContext
       sensors={sensors}
